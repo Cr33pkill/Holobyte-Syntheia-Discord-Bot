@@ -1,4 +1,4 @@
-# Discord-bot-Synthia
+# Discord-bot-Syntheia
 
 
 # Discord bot (TheMain.py) made by @cr33pkill and @itzdavidwastaken
