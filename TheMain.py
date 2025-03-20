@@ -13,7 +13,7 @@
 #
 # © ItzDavid And Cr33pkill 2025
 
-# This is the main file for the Synthia bot
+# This is the main file for the Syntheia bot
 # imports all the libraries used in the bot
 from datetime import datetime
 import os
@@ -101,8 +101,8 @@ async def kick(interaction: discord.Interaction, member: discord.Member, reason:
 # these are all silly /commands
 @client.tree.command(name="hello",description="Says Hello!",guild=GFC)
 async def SayHello(interaction: discord.Interaction):
-    print("responding with 'HEY IM Synthia!'")
-    await interaction.response.send_message("HEY IM Synthia!")
+    print("responding with 'HEY IM Syntheia!'")
+    await interaction.response.send_message("HEY IM Syntheia!")
 
 @client.tree.command(name="Sigma party",description="🤨",guild=GFC)
 async def SP(interaction: discord.Interaction):
