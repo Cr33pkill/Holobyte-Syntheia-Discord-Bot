@@ -39,7 +39,6 @@ class Client(commands.Bot):
             GFC = discord.Object(id=GUILD)
             synced = await self.tree.sync(guild=GFC)  # Syncs commands
             print(f"Synced {len(synced)} commands to guild {GFC}")
-
             channel = self.get_channel(CHANNEL_ID)  # Get the channel object
             if channel is not None:
                 current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -97,12 +96,21 @@ async def kick(interaction: discord.Interaction, member: discord.Member, reason:
         await interaction.response.send_message(f"An error occurred: {e}", ephemeral=True)
         print(f"An error occured: {e}")
 
-
 # these are all silly /commands
 @client.tree.command(name="hello",description="Says Hello!",guild=GFC)
 async def SayHello(interaction: discord.Interaction):
     print("responding with 'HEY IM Syntheia!'")
     await interaction.response.send_message("HEY IM Syntheia!")
+
+@client.tree.command(name="Owners",description="Lists owners",guild=GFC)
+async def SayHello(interaction: discord.Interaction):
+    print("responding with 'My owners are ItzDavid and Cr33pkill'")
+    await interaction.response.send_message("My owners are ItzDavid and Cr33pkill")
+
+@client.tree.command(name="Kanye",description="lol",guild=GFC)
+async def SayHello(interaction: discord.Interaction):
+    print("responding with 'Wake up Mr. West!'")
+    await interaction.response.send_message("wake up Mr. West!")
 
 @client.tree.command(name="party",description="🤨",guild=GFC)
 async def SP(interaction: discord.Interaction):
