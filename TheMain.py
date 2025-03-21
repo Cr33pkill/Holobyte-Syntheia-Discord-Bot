@@ -104,7 +104,7 @@ async def SayHello(interaction: discord.Interaction):
     print("responding with 'HEY IM Syntheia!'")
     await interaction.response.send_message("HEY IM Syntheia!")
 
-@client.tree.command(name="Sigma party",description="🤨",guild=GFC)
+@client.tree.command(name="party",description="🤨",guild=GFC)
 async def SP(interaction: discord.Interaction):
     print("responding with 'There ain't no party like a Sigma party :3'")
     await interaction.response.send_message("There ain't no party like a Sigma party :3")
@@ -148,7 +148,6 @@ async def insultme(interaction: discord.Interaction):
             Insult = "No la passion"
     print(f"responding with'{Insult}'")
     await interaction.response.send_message(Insult)
-
 
 # This pings the latency to check the delay between the bot and the console
 @client.tree.command(name="ping", description="latency check",guild=GFC)
