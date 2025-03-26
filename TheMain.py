@@ -18,18 +18,143 @@
 from datetime import datetime
 import os
 import discord
-from dotenv import load_dotenv
 from discord import app_commands
 from discord.ext import commands
 import random
+import time
 
-# retrieves the info from the .env file
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
-CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))
-owner1 = os.getenv('OWNER1')
-owner2 = os.getenv('OWNER2')
+def exit():
+    print("  █████████  █████                  █████     █████     ███                     ")
+    time.sleep(0.1)
+    print(" ███░░░░░███░░███                  ░░███     ░░███     ░░░                      ")
+    time.sleep(0.1)
+    print("░███    ░░░  ░███████   █████ ████ ███████   ███████   ████  ████████    ███████")
+    time.sleep(0.1)
+    print("░░█████████  ░███░░███ ░░███ ░███ ░░░███░   ░░░███░   ░░███ ░░███░░███  ███░░███")
+    time.sleep(0.1)
+    print(" ░░░░░░░░███ ░███ ░███  ░███ ░███   ░███      ░███     ░███  ░███ ░███ ░███ ░███")
+    time.sleep(0.1)
+    print(" ███    ░███ ░███ ░███  ░███ ░███   ░███ ███  ░███ ███ ░███  ░███ ░███ ░███ ░███")
+    time.sleep(0.1)
+    print("░░█████████  ████ █████ ░░████████  ░░█████   ░░█████  █████ ████ █████░░███████")
+    time.sleep(0.1)
+    print(" ░░░░░░░░░  ░░░░ ░░░░░   ░░░░░░░░    ░░░░░     ░░░░░  ░░░░░ ░░░░ ░░░░░  ░░░░░███")
+    time.sleep(0.1)
+    print("                                                                        ███ ░███")
+    time.sleep(0.1)
+    print("                                                                       ░░██████ ")
+    time.sleep(0.1)
+    print("                                                                        ░░░░░░  ")
+    time.sleep(0.1)
+    print("")
+    time.sleep(0.1)
+    print("")
+    time.sleep(0.1)
+    print("▓█████▄  ▒█████   █     █░███▄    █ ")
+    time.sleep(0.1)
+    print("▒██▀ ██▌▒██▒  ██▒▓█░ █ ░█░██ ▀█   █ ")
+    time.sleep(0.1)
+    print("░██   █▌▒██░  ██▒▒█░ █ ░█▓██  ▀█ ██▒")
+    time.sleep(0.1)
+    print("░▓█▄   ▌▒██   ██░░█░ █ ░█▓██▒  ▐▌██▒")
+    time.sleep(0.1)
+    print("░▒████▓ ░ ████▓▒░░░██▒██▓▒██░   ▓██░")
+    time.sleep(0.1)
+    print(" ▒▒▓  ▒ ░ ▒░▒░▒░ ░ ▓░▒ ▒ ░ ▒░   ▒ ▒ ")
+    time.sleep(0.1)
+    print(" ░ ▒  ▒   ░ ▒ ▒░   ▒ ░ ░ ░ ░░   ░ ▒░")
+    time.sleep(0.1)
+    print(" ░ ░  ░ ░ ░ ░ ▒    ░   ░    ░   ░ ░ ")
+    time.sleep(0.1)
+    print("   ░        ░ ░      ░            ░ ")
+    time.sleep(0.1)
+    print(" ░                                  ")
+    for i in range(30):
+        print("")
+        time.sleep(0.1)
+    SystemExit
+
+try:
+    import dotenvloader
+except:
+    # stores dotenvloader.py code
+    # checks if it allowed to make a file
+    # makes a file and writes to it
+    print("dotenvloader.py not found!")
+    print("Creating dotenvloader.py")
+    code = [
+        'import os',
+        '',
+        'def dotenv_find():',
+        '    current_directory = os.path.dirname(os.path.abspath(__file__))',
+        "    dotenv_path = os.path.join(current_directory, '.env')",
+        '    return dotenv_path',
+        '',
+        'def dotenv_load(file_path):',
+        '    var_list = []',
+        '    var_data_list = []',
+        '    """Load environment variables from a .env file."""',
+        '    if not os.path.exists(file_path):',
+        '        print(f"Warning: {file_path} file not found!")',
+        '        return',
+        "    with open(file_path, 'r') as file:",
+        '        for line in file:',
+        '            line = line.strip()',
+        "            if line and not line.startswith('#'):",
+        "                key, value = line.split('=', 1)",
+        '                os.environ[key.strip()] = value.strip()',
+        '                var_list.append(key.strip())',
+        '                var_data_list.append(value.strip())',
+        '    for i in range(len(var_list)):',
+        '        var_list[i] = var_list[i].replace(\'"\', \'\').replace("\'", \'\').strip()',
+        '        var_data_list[i] = var_data_list[i].replace(\'"\', \'\').replace("\'", \'\').strip()',
+        '    print(f"Environment variables loaded successfully: {var_list} , {var_data_list}")'
+        '    return var_data_list'
+    ]
+    try:
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(current_directory, "dotenvloader.py")
+        with open(file_path, "w") as file:
+            for line in code:
+                file.write(line + "\n")
+        print(f"dotenvloader.py created successfully!")
+        print("Start the program again")
+        exit()
+    except PermissionError:
+        print("Permission required to write to directory.")
+        exit()
+    except Exception as e:
+        print(f"An error occurred while creating dotenvloader.py: {e}")
+        exit()
+
+try:
+    from dotenvloader import dotenv_load, dotenv_find
+except:
+    print("ERROR:")
+    print("")
+    print("dotenvloader.py currupted!")
+    print("")
+    print("FIX:")
+    print("")
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_directory, "dotenvloader.py")
+    print(f"import failed: Delete File: {current_directory}")
+    print("system will then fix on next boot")
+    print("")
+    print("")
+
+def dotenv_orders():
+    dotenv_path = dotenv_find()
+    var_data_list = dotenv_load(dotenv_path)
+    return var_data_list
+
+var_data_list = dotenv_orders()
+TOKEN = var_data_list[0]
+GUILD = var_data_list[1]
+GUILD = int(GUILD)
+CHANNEL_ID = var_data_list[2]
+OWNER1 = var_data_list[3]
+OWNER2 = var_data_list[4]
 
 # Creates the bot itself 'Client' and does the startup sequence
 class Client(commands.Bot):
@@ -102,12 +227,18 @@ async def SayHello(interaction: discord.Interaction):
     print("responding with 'HEY IM Syntheia!'")
     await interaction.response.send_message("HEY IM Syntheia!")
 
-@client.tree.command(name="Owners",description="Lists owners",guild=GFC)
+@client.tree.command(name="random",description="Gives a random number! between 1 and 100",guild=GFC)
+async def SayHello(interaction: discord.Interaction):
+    ran_num = random.randint(1,100)
+    print(f"responding with '{ran_num}'")
+    await interaction.response.send_message(f"{ran_num}")
+
+@client.tree.command(name="owners",description="Lists owners",guild=GFC)
 async def SayHello(interaction: discord.Interaction):
     print("responding with 'My owners are ItzDavid and Cr33pkill'")
     await interaction.response.send_message("My owners are ItzDavid and Cr33pkill")
 
-@client.tree.command(name="Kanye",description="lol",guild=GFC)
+@client.tree.command(name="kanye",description="lol",guild=GFC)
 async def SayHello(interaction: discord.Interaction):
     print("responding with 'Wake up Mr. West!'")
     await interaction.response.send_message("wake up Mr. West!")
@@ -182,5 +313,77 @@ async def on_app_command_error(interaction: discord.Interaction, error: app_comm
             ephemeral=True
         )
 
-# starts the bot     
+def intro():
+    for i in range(40):
+        print("")
+        time.sleep(0.1)
+    print(" █████   ███   █████          ████                                            ")
+    time.sleep(0.1)
+    time.sleep(0.1)
+    print("░░███   ░███  ░░███          ░░███                                            ")
+    time.sleep(0.1)
+    print(" ░███   ░███   ░███   ██████  ░███   ██████   ██████  █████████████    ██████ ")
+    time.sleep(0.1)
+    print(" ░███   ░███   ░███  ███░░███ ░███  ███░░███ ███░░███░░███░░███░░███  ███░░███")
+    time.sleep(0.1)
+    print(" ░░███  █████  ███  ░███████  ░███ ░███ ░░░ ░███ ░███ ░███ ░███ ░███ ░███████ ")
+    time.sleep(0.1)
+    print("  ░░░█████░█████░   ░███░░░   ░███ ░███  ███░███ ░███ ░███ ░███ ░███ ░███░░░  ")
+    time.sleep(0.1)
+    print("    ░░███ ░░███     ░░██████  █████░░██████ ░░██████  █████░███ █████░░██████ ")
+    time.sleep(0.1)
+    print("     ░░░   ░░░       ░░░░░░  ░░░░░  ░░░░░░   ░░░░░░  ░░░░░ ░░░ ░░░░░  ░░░░░░  ")
+    for i in range(5):
+        print("")
+        time.sleep(0.1)
+    print(" █████               ████           █████                 █████            ")
+    time.sleep(0.1)
+    print("░░███               ░░███          ░░███                 ░░███             ")
+    time.sleep(0.1)
+    print(" ░███████    ██████  ░███   ██████  ░███████  █████ ████ ███████    ██████ ")
+    time.sleep(0.1)
+    print(" ░███░░███  ███░░███ ░███  ███░░███ ░███░░███░░███ ░███ ░░░███░    ███░░███")
+    time.sleep(0.1)
+    print(" ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███   ░███    ░███████ ")
+    time.sleep(0.1)
+    print(" ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███   ░███ ███░███░░░  ")
+    time.sleep(0.1)
+    print(" ████ █████░░██████  █████░░██████  ████████  ░░███████   ░░█████ ░░██████ ")
+    time.sleep(0.1)
+    print("░░░░ ░░░░░  ░░░░░░  ░░░░░  ░░░░░░  ░░░░░░░░    ░░░░░███    ░░░░░   ░░░░░░  ")
+    time.sleep(0.1)
+    print("                                               ███ ░███                    ")
+    time.sleep(0.1)
+    print("                                              ░░██████                     ")
+    time.sleep(0.1)
+    print("                                               ░░░░░░                      ")
+    for i in range(2):
+        print("")
+        time.sleep(0.1)
+    print("  █████████                         █████    █████                ███               ")
+    time.sleep(0.1)
+    print(" ███░░░░░███                       ░░███    ░░███                ░░░                ")
+    time.sleep(0.1)
+    print("░███    ░░░  █████ ████ ████████   ███████   ░███████    ██████  ████   ██████      ")
+    time.sleep(0.1)
+    print("░░█████████ ░░███ ░███ ░░███░░███ ░░░███░    ░███░░███  ███░░███░░███  ░░░░░███     ")   
+    time.sleep(0.1)
+    print(" ░░░░░░░░███ ░███ ░███  ░███ ░███   ░███     ░███ ░███ ░███████  ░███   ███████     ")
+    time.sleep(0.1)
+    print(" ███    ░███ ░███ ░███  ░███ ░███   ░███ ███ ░███ ░███ ░███░░░   ░███  ███░░███     ")
+    time.sleep(0.1)
+    print("░░█████████  ░░███████  ████ █████  ░░█████  ████ █████░░██████  █████░░████████    ")
+    time.sleep(0.1)
+    print(" ░░░░░░░░░    ░░░░░███ ░░░░ ░░░░░    ░░░░░  ░░░░ ░░░░░  ░░░░░░  ░░░░░  ░░░░░░░░     ")
+    time.sleep(0.1)
+    print("              ███ ░███       Cr33pkill, ItzDavid                                    ")
+    time.sleep(0.1)
+    print("             ░░██████                                                               ")
+    time.sleep(0.1)
+    print("              ░░░░░░                                                                ")                                                       
+    for i in range(30):
+        print("")
+        time.sleep(0.1)
+
+intro()
 client.run(TOKEN)
