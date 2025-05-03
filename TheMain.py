@@ -12,7 +12,6 @@
 # the Copyright notice must be retained.
 #
 # © ItzDavid And Cr33pkill 2025
-
 # This is the main file for the Syntheia bot
 # imports all the libraries used in the bot
 from datetime import datetime
@@ -23,7 +22,7 @@ from discord.ext import commands
 import random
 import time
 
-def exit():
+def exit_program():
     print("  █████████  █████                  █████     █████     ███                     ")
     time.sleep(0.1)
     print(" ███░░░░░███░░███                  ░░███     ░░███     ░░░                      ")
@@ -72,76 +71,22 @@ def exit():
     for i in range(30):
         print("")
         time.sleep(0.1)
-    SystemExit
+    SystemExit()
 
 try:
     import dotenvloader
-except:
-    # stores dotenvloader.py code
-    # checks if it allowed to make a file
-    # makes a file and writes to it
+except ModuleNotFoundError:
     print("dotenvloader.py not found!")
-    print("Creating dotenvloader.py")
-    code = [
-        'import os',
-        '',
-        'def dotenv_find():',
-        '    current_directory = os.path.dirname(os.path.abspath(__file__))',
-        "    dotenv_path = os.path.join(current_directory, '.env')",
-        '    return dotenv_path',
-        '',
-        'def dotenv_load(file_path):',
-        '    var_list = []',
-        '    var_data_list = []',
-        '    """Load environment variables from a .env file."""',
-        '    if not os.path.exists(file_path):',
-        '        print(f"Warning: {file_path} file not found!")',
-        '        return',
-        "    with open(file_path, 'r') as file:",
-        '        for line in file:',
-        '            line = line.strip()',
-        "            if line and not line.startswith('#'):",
-        "                key, value = line.split('=', 1)",
-        '                os.environ[key.strip()] = value.strip()',
-        '                var_list.append(key.strip())',
-        '                var_data_list.append(value.strip())',
-        '    for i in range(len(var_list)):',
-        '        var_list[i] = var_list[i].replace(\'"\', \'\').replace("\'", \'\').strip()',
-        '        var_data_list[i] = var_data_list[i].replace(\'"\', \'\').replace("\'", \'\').strip()',
-        '    print(f"Environment variables loaded successfully: {var_list} , {var_data_list}")'
-        '    return var_data_list'
-    ]
-    try:
-        current_directory = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(current_directory, "dotenvloader.py")
-        with open(file_path, "w") as file:
-            for line in code:
-                file.write(line + "\n")
-        print(f"dotenvloader.py created successfully!")
-        print("Start the program again")
-        exit()
-    except PermissionError:
-        print("Permission required to write to directory.")
-        exit()
-    except Exception as e:
-        print(f"An error occurred while creating dotenvloader.py: {e}")
-        exit()
-
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    print(f"Download dotenvloader.py from https://github.com/Cr33pkill/Holobyte-Syntheia-Discord-Bot and place it in {current_directory}")
+    print("Start the program again")
+    exit_program()
 try:
     from dotenvloader import dotenv_load, dotenv_find
-except:
-    print("ERROR:")
-    print("")
-    print("dotenvloader.py currupted!")
-    print("")
-    print("FIX:")
-    print("")
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(current_directory, "dotenvloader.py")
-    print(f"import failed: Delete File: {current_directory}")
-    print("system will then fix on next boot")
-    print("")
-    print("")
+except ImportError:
+    print("ERROR: dotenvloader.py has been modified or is incompatible.")
+    print("Please replace it with the original at https://github.com/Cr33pkill/Holobyte-Syntheia-Discord-Bot .")
+    exit_program()
 
 def dotenv_orders():
     dotenv_path = dotenv_find()
@@ -152,6 +97,8 @@ var_data_list = dotenv_orders()
 TOKEN = var_data_list[0]
 GUILD = var_data_list[1]
 GUILD = int(GUILD)
++
+
 CHANNEL_ID = var_data_list[2]
 OWNER1 = var_data_list[3]
 OWNER2 = var_data_list[4]
@@ -200,7 +147,7 @@ async def logout(ctx: discord.Interaction):
     print("Responding with 'Logged Out'")
     await ctx.response.send_message("Logged Out",ephemeral=True)
     client.close()
-    exit()
+    exit_program()
 
 @client.tree.command(name="kick",description="kicks members",guild=GFC)
 @app_commands.describe(member="The member to kick", reason="The reason they are being kicked")
@@ -384,6 +331,5 @@ def intro():
     for i in range(30):
         print("")
         time.sleep(0.1)
-
 intro()
 client.run(TOKEN)
