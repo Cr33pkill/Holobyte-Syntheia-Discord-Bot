@@ -1,7 +1,7 @@
 # Discord-bot-Syntheia
 
 
-# Discord bot (TheMain.py) made by @cr33pkill and @itzdavidwastaken
+# Discord bot (TheMain.py) made by @cr33dev and @itzdavidwastaken
 
 # dotenvloader.py made by @cr33pkill
 
