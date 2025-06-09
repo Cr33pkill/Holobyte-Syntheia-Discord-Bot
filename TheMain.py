@@ -11,7 +11,7 @@
 # If used in whole or in part under the MIT License
 # the Copyright notice must be retained.
 #
-# © ItzDavid And Cr33pkill 2025
+# © ItzDavid And Cr33dev 2025
 # This is the main file for the Syntheia bot
 # imports all the libraries used in the bot
 from datetime import datetime
