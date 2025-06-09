@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: © 2025 Cr33pkill
+# SPDX-FileCopyrightText: © 2025 Cr33dev
 # SPDX-License-Identifier: MIT
 # SPDX-License-Identifier: PSF-2.0
 #
