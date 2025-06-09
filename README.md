@@ -3,7 +3,7 @@
 
 # Discord bot (TheMain.py) made by @cr33dev and @itzdavidwastaken
 
-# dotenvloader.py made by @cr33pkill
+# dotenvloader.py made by @cr33dev
 
 # Audioop.py made by Shaun Wilson
 
